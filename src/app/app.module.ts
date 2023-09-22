@@ -8,6 +8,8 @@ import { TeamMemberComponent } from './team-member/team-member.component';
 import { FaqComponent } from './faq/faq.component';
 import { PortfolioComponent } from './portfolio/portfolio.component';
 import {HttpClientModule} from '@angular/common/http';
+import {FormsModule} from '@angular/forms';
+import { ContactUsComponent } from './contact-us/contact-us.component';
 
 @NgModule({
   declarations: [
@@ -16,11 +18,13 @@ import {HttpClientModule} from '@angular/common/http';
     ExploreComponent,
     TeamMemberComponent,
     FaqComponent,
-    PortfolioComponent
+    PortfolioComponent,
+    ContactUsComponent
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

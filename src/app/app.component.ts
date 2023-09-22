@@ -1,4 +1,59 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject } from '@angular/core';
+//import { ApiService } from './api.service';
+import {HttpClient} from '@angular/common/http';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent {
+  featureList: any[] = [];
+  teamMembersList: any[] = [];
+  faqList: any[] = [];
+ //@Inject(ApiService)
+  constructor( private apiCaller: HttpClient) {}
+
+  ngOnInit() {
+    this.getFeatures();
+    this.getTeamMembers();
+    this.getFaqs();
+  }
+
+  getFaqs() {
+    this.apiCaller.get('http://localhost:3000/faq').subscribe((data: any) => {
+      this.faqList = data;
+    });
+  }
+
+  getFeatures() {
+    this.apiCaller.get('http://localhost:3000/feature').subscribe((data: any) => {
+      this.featureList = data;
+    });
+  }
+
+  getTeamMembers() {
+    this.apiCaller.get('http://localhost:3000/team-members').subscribe((data: any) => {
+      this.teamMembersList = data;
+    });
+  }
+}  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FAQ } from './Models/FAQ';
 import { FEATURE } from './Models/FAQ';
@@ -53,4 +108,4 @@ getTeamMembers(){
      
    })
   }
-}
+}*/
